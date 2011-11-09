@@ -14,6 +14,8 @@ module Spec
   
         def unregister_verify_after_each #:nodoc:
           proc = verify_rendered_proc
+          #fix exception with undefined method `remove_after' for Spec::Example::ExampleGroup:Class
+          #Spec::Example::ExampleGroup.after_each_parts.remove(proc)
           Spec::Example::ExampleGroup.remove_after(:each, &proc)
         end
 
